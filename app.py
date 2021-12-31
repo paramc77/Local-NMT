@@ -32,7 +32,9 @@ tokenizer.src_lang = "en"
 def index():
     if request.method == 'POST':
         source_text = request.form['rawtext']
+        source_l = "en"
         source_l = request.form['sourcelang'].lower()
+        target_l = "de"
         target_l = request.form['targetlang'].lower()
         # Tokenize the text
         # batch = tokenizer([source_text], return_tensors="pt", padding=True)
