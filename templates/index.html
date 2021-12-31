@@ -3,12 +3,38 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Local NMT</title>
+        <title>CTS NMT Systems</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer/" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        
+        <script>
+			$(function(){
+				$("#sourcel li a").click(function(){
+					$("#btn-1:first-child").text($(this).text());
+					$("#btn-1:first-child").val($(this).text());
+					$("#sourcelang").val($(this).text());
+				});
+			});
+			
+			$(function(){
+				$("#targetl li a").click(function(){
+					$("#btn-2:first-child").text($(this).text());
+					$("#btn-2:first-child").val($(this).text());
+					$("#targetlang").val($(this).text());
+				});
+			});
+			
+			$(function(){
+				$("#domain li a").click(function(){
+					$("#btn-3:first-child").text($(this).text());
+					$("#btn-3:first-child").val($(this).text());
+				});
+			});
+        </script>
         <style>
         html {
           position: relative;
@@ -31,11 +57,16 @@
           background-color: #f5f5f5;
           /* Not required */
         }
+        .dropdown{
+			display: inline-block;
+		}
         </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="/"><font size="+1">Local Neural Machine Translation: {{ source_lang }} - {{ target_lang }}</a>
+            <!--a class="navbar-brand" href="/"><font size="+1">Local Neural Machine Translation: {{ source_lang }} - {{ target_lang }}</a-->
+            <a class="navbar-brand" href="/"><font size="+1">Centre for Translation Studies :: Neural Machine Translation System</a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,15 +74,63 @@
         <br /><br /><br />
         <div class="container">
             <form method="POST" action="">
+				<input type="hidden" id="sourcelang" name="sourcelang"></input>
+				<input type="hidden" id="targetlang" name="targetlang"></input>
                 <div class="form-group">
+					<div class="btn-group">
+						<button class="btn btn-1" id="btn-1">Source Language</button>
+						<button class="btn dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" id="sourcel" role="menu" aria-labelledby="dropdownMenu">
+							<li><a class="dropdown-item" tabindex="-1" href="#">En</a></li>
+							<!--li><a class="dropdown-item" tabindex="-1" href="#">Item II</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Item III</a></li-->
+							<!--li class="divider"></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Other</a></li-->
+						</ul>
+					</div>
+					<div class="btn-group">
+						<button class="btn btn-2" id="btn-2" name="targetl">Target Language</button>
+						<button class="btn dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" id="targetl" role="menu" aria-labelledby="dropdownMenu">
+							<li><a class="dropdown-item" tabindex="-1" href="#">Es</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">It</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Ro</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">De</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Ko</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Pt</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Pl</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Hi</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Mr</a></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Bn</a></li>
+							<!--li class="divider"></li>
+							<li><a class="dropdown-item" tabindex="-1" href="#">Other</a></li-->
+						</ul>
+					</div>
+					<div class="btn-group">
+						<button class="btn btn-3" id="domain" name="domain">Domain</button>
+						<button class="btn dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+							<li><a class="dropdown-item disabled" tabindex="-1" href="#">Healthcare</a></li>
+						</ul>
+					</div>
+					<br /><br />
+                    <textarea rows="5" cols="5" class="form-control" id="textarea" placeholder="Enter text (preferably one sentence)" name="rawtext" required></textarea>
+                    <br />
                     <button type="submit" class="btn btn-info"><i class="fa fa-database"></i>Translate</button>
-                    <textarea rows="5" cols="5" class="form-control" id="textarea" name="rawtext" required></textarea>
                 </div>
             </form>
         </div>
 
         <div class="container">
           <div class="row">
+			  {{ source_l }}
+			  {{ target_l }}
             <div class="col-sm">
                 <p>Original</p>
                 <div class="alert alert-success" role="alert">
@@ -72,11 +151,11 @@
         <footer class="footer">
           <div class="container">
             <span class="text-muted">
-                V. 0.1 - Follow me on <a href='https://github.com/fantinuoli'>GitHub</a>
+                V. 0.2 - Being developed by <a href='https://dipteshkanojia.github.io'>Diptesh Kanojia</a>; Original template credits to <a href="https://github.com/fantinuoli/Local-NMT">Claudio Fantinuoli</a>; Translation model credits to <a href="https://huggingface.co/docs/transformers/model_doc/m2m_100">HuggingFace Facebook M2M Model</a> Library.
             </span>
           </div>
         </footer>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     </body>

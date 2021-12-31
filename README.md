@@ -1,5 +1,12 @@
 # Run a pre-trained Huggingface Machine Translation engine with UI on your local computer
 
+## Changelog after forking
+
+- Changed model to Facebook M2M for 100 language support.
+- Tokenizer change.
+- Added target language change support via dropdown (source language changed to be added later).
+- Flask hosting changed to 0.0.0.0 to support access throughout internal network.
+
 ## Installation
 
 You need to have Python (3.8 or 3.9), [Tensorflow](https://www.tensorflow.org/install), [Torch](https://pytorch.org/get-started/locally/) and any VirtualEnv tool (in this example [pipenv](https://pypi.org/project/pipenv/)) installed on your machine. Please refer to the respective installation pages should you have any problem during installation.
