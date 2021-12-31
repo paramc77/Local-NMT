@@ -34,8 +34,9 @@ def index():
         source_text = request.form['rawtext']
         source_l = "en"
         source_l = request.form['sourcelang'].lower()
-        target_l = "de"
         target_l = request.form['targetlang'].lower()
+        if(target_l == ''):
+            target_l = "de"
         # Tokenize the text
         # batch = tokenizer([source_text], return_tensors="pt", padding=True)
                 
