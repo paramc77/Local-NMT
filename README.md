@@ -1,4 +1,4 @@
-# Centre for Translation Studies NMT Systems demo (CTSNMT)
+# Centre for Translation Studies NMT Systems (CTSNMT)
 
 ## Changelog after forking
 
