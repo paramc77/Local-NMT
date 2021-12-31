@@ -1,4 +1,4 @@
-# Run a pre-trained Huggingface Machine Translation engine with UI on your local computer
+# Centre for Translation Studies NMT Systems demo (CTSNMT)
 
 ## Changelog after forking
 
