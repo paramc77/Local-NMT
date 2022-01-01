@@ -13,6 +13,7 @@
 - Added support for selection of source language.
 - POST request sends back previous source/target language pair (system defaults to translating for the last language pair, if languages not selected).
 - Added support for model change in HTML (Flask side pages to be added later).
+- Added CTS logo.
 
 ## To be added
 
