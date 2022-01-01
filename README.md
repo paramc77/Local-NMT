@@ -25,7 +25,7 @@
 ## Run
 - open Terminal/Shell
 - navigate to App directory
-- python app.py
+- python app.py (requires GPU for fast inference, relatively slower inference with CPU)
 - open Browser and copy and paste URL indicated in prompt (http://131.227.176.164:5000)
 
 ## User Interface
