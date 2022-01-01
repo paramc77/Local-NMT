@@ -23,10 +23,8 @@
 - Internal CTS NMT systems
 - Domain-level Support
 ## Run
-- modify the desired language combination directly in app.py, where `source_lang`is the language code for the source and `target_lang` for the target language (as in the model name). The corresponding language model will be automatically downloaded.
 - open Terminal/Shell
 - navigate to App directory
-- pipenv shell
 - python app.py
 - open Browser and copy and paste URL indicated in prompt (http://131.227.176.164:5000)
 
