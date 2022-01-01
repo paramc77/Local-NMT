@@ -2,10 +2,17 @@
 
 ## Changelog after forking
 
+#### 31/12/2021
 - Changed model to Facebook M2M for 100 language support.
 - Tokenizer change.
 - Added target language change support via dropdown (source language change to be added later).
 - Flask hosting changed to 0.0.0.0 to support access throughout internal network.
+
+#### 01/01/2022
+- Added Semantic UI for searchable dropdown.
+- Added support for selection of source language.
+- POST request sends back previous source/target language pair (system defaults to translating for the last language pair, if languages not selected).
+- Added support for model change in HTML (Flask side pages to be added later).
 
 ## To be added
 
