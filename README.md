@@ -1,4 +1,4 @@
-# Centre for Translation Studies NMT WebApp (CTS-NMT)
+# Centre for Translation Studies NMT on Web (CTS-NMT)
 
 ## Changelog after forking
 
