@@ -18,14 +18,13 @@
 ## To be added
 
 - Feedback support
-- Support for multiple languages on the source side.
-- Model change support
 - Internal CTS NMT systems
+- Model change support
 - Domain-level Support
 ## Run
 - open Terminal/Shell
 - navigate to App directory
-- python app.py (requires GPU for fast inference, relatively slower inference with CPU)
+- python app.py (requires GPU for fast inference, relatively slower inference with CPUs)
 - open Browser and copy and paste URL indicated in prompt (http://131.227.176.164:5000)
 
 ## User Interface
