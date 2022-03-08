@@ -2,7 +2,16 @@
 
 ## Changelog after forking
 
+#### 03/08/2021
+- **v1.0.0**: Asynchrounous translation finally!
+- Use of Swagger API added, calls to API for translation (removed form submit).
+- Source and Target language selection via Python dictionary; removed dependency of data-id from HTML. 
+- Changed model to FB M2M 418M for quick debugging.
+- resolved icon issue while selecting languages.
+- resolved "hidden input" dependencies, jquery based language selection using semantic ui default hidden fields.
+- navbar icon trimmed.
 #### 31/12/2021
+- **v0.5.1**: Asynchrounous translation finally!
 - Changed model to Facebook M2M for supporting 100+ languages.
 - Tokenizer change.
 - Added target language change support via dropdown (source language change to be added later).
@@ -16,16 +25,29 @@
 - Added CTS logo.
 
 ## To be added
-
 - Feedback support
 - Internal CTS NMT systems
 - Model change support
 - Domain-level Support
+
+## Installation ( necessary; but easy :) )
+
+#### Step 1
+```bash
+git clone https://github.com/surrey-nlp/Local-NMT.git
+cd Local-NMT
+```
+#### Step 2
+```bash
+pip install -r requirements.txt
+```
 ## Run
-- open Terminal/Shell
-- navigate to App directory
-- python app.py (requires GPU for fast inference, relatively slower inference with CPUs)
-- open Browser and copy and paste URL indicated in prompt (http://131.227.176.164:5000)
+```bash
+python app.py
+```
+ (requires GPU for fast inference, relatively slower inference with CPUs)
+
+Now, you can open Browser and copy and paste URL indicated in prompt (http://localhost:5000)
 
 ## User Interface
 
