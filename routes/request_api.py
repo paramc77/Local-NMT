@@ -3,6 +3,7 @@ import uuid
 from datetime import datetime, timedelta
 from flask import jsonify, abort, request, Blueprint, render_template
 #from flask import Flask, flash, Response, redirect, url_for, request, session, abort, render_template, make_response, jsonify
+import io
 
 from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
 import torch
@@ -30,8 +31,6 @@ def index():
 
 @REQUEST_API.route('/translate', methods=['POST'])
 def translate():
-    # print( request.form['data'])
-    # print(request.method, request.form['sourcelang'])
 
     if not request.form:
         abort(400)
@@ -58,6 +57,9 @@ def translate():
     result = {
         "translated_text": translation[0]
     }
+    with io.open("recordTranslations.tsv", "a") as transWrite:
+        transWrite.write(source_l + "\t" + target_l + "\t" + "\"" + source_text.strip() + "\"" + "\t" + "\"" + translation[0].strip() + "\"" + "\n")
+
     return jsonify(result), 200
 
  

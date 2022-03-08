@@ -10,6 +10,7 @@
 - resolved icon issue while selecting languages.
 - resolved "hidden input" dependencies, jquery based language selection using semantic ui default hidden fields.
 - navbar icon trimmed.
+- added collection of translated text to a file (step towards feedback)
 #### 31/12/2021
 - **v0.5.1**: Asynchrounous translation finally!
 - Changed model to Facebook M2M for supporting 100+ languages.
