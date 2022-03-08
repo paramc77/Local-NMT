@@ -1,57 +1,69 @@
-import flask
-from flask import Flask, flash, Response, redirect, url_for, request, session, abort, render_template, make_response, jsonify
-from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
-import torch
-from typing import List
+"""A Python Flask REST API BoilerPlate (CRUD) Style"""
+
+import argparse
 import os
-import json
+from flask import Flask, jsonify, make_response
+from flask_cors import CORS
+from flask_swagger_ui import get_swaggerui_blueprint
+from routes import request_api
 
-app = flask.Flask(__name__)
-app.secret_key = '1234abcd#'
+APP = Flask(__name__)
 
-#initiate language pair for translator
-#the corresponding language model will be automatically downloaded from Huggingface
-# source_lang = "en"
-# target_lang = "de"
+### swagger specific ###
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Machine translation"
+    }
+)
+APP.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+### end swagger specific ###
 
-device = "cuda:0" if torch.cuda.is_available() else "cpu"
-tokenizer = M2M100Tokenizer.from_pretrained("facebook/m2m100_1.2B")
-model = M2M100ForConditionalGeneration.from_pretrained("facebook/m2m100_1.2B").to(device)
+
+APP.register_blueprint(request_api.get_blueprint())
+'''
+
+@APP.errorhandler(400)
+def handle_400_error(_error):
+    """Return a http 400 error to client"""
+    return make_response(jsonify({'error': 'Misunderstood'}), 400)
 
 
-# model_name = f'Helsinki-NLP/opus-mt-en-mul'
-# model = MarianMTModel.from_pretrained(model_name)
-# tokenizer = MarianTokenizer.from_pretrained(model_name)
+@APP.errorhandler(401)
+def handle_401_error(_error):
+    """Return a http 401 error to client"""
+    return make_response(jsonify({'error': 'Unauthorised'}), 401)
 
-###############################################
-# ROUTINGS
-###############################################
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    source_l = "en"
-    target_l = "de"
-    if request.method == 'POST':
-        source_text = request.form['rawtext']
-        
-        
-        source_l = request.form['sourcelang'].lower()
-        if(source_l == ''):
-            tokenizer.src_lang = "en"
-        else:
-            tokenizer.src_lang = source_l
+@APP.errorhandler(404)
+def handle_404_error(_error):
+    """Return a http 404 error to client"""
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
-        target_l = request.form['targetlang'].lower()
-        if(target_l == ''):
-            target_l = "de"
-        encoded_hi = tokenizer([source_text], return_tensors="pt", padding=True).to(device)
-        generated_tokens = model.generate(**encoded_hi, forced_bos_token_id=tokenizer.get_lang_id(target_l))
-        translation = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
 
-        # print(source_l, target_l)
-        return render_template("index.html", target_text=translation[0], source_text=source_text, source_lang=source_l, target_lang=target_l )
-        # return jsonify(target_text=translation[0], source_text=source_text, source_lang=source_l, target_lang=target_l)
-    # return render_template("index.html", source_lang=source_lang, target_lang=target_lang)
-    return render_template("index.html")
+@APP.errorhandler(500)
+def handle_500_error(_error):
+    """Return a http 500 error to client"""
+    return make_response(jsonify({'error': 'Server error'}), 500)
+'''
 
-app.run(debug=True, host="0.0.0.0")
+if __name__ == '__main__':
+
+    PARSER = argparse.ArgumentParser(
+        description="Seans-Python-Flask-REST-Boilerplate")
+
+    PARSER.add_argument('--debug', action='store_true',
+                        help="Use flask debug/dev mode with file change reloading")
+    ARGS = PARSER.parse_args()
+
+    PORT = int(os.environ.get('PORT', 5000))
+
+    if ARGS.debug:
+        print("Running in debug mode")
+        CORS = CORS(APP)
+        APP.run(host='0.0.0.0', port=PORT, debug=True)
+    else:
+        APP.run(host='0.0.0.0', port=PORT, debug=False)

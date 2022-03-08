@@ -7,65 +7,55 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer/" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='semantic.css') }}" />
-        <style>
-            html {
-              position: relative;
-              min-height: 100%;
-            }
-            
-            body {
-              margin-bottom: 60px;
-              /* Margin bottom by footer height */
-            }
-    
-            .footer {
-              position: absolute;
-              bottom: 0;
-              width: 100%;
-              height: 60px;
-              /* Set the fixed height of the footer here */
-              line-height: 60px;
-              /* Vertically center the text there */
-              background-color: #f5f5f5;
-              /* Not required */
-            }
-            body {
-                font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-                font-size: 14px;
-                line-height: 1.4285em;
-                color: rgba(0,0,0,.87);
-            }
-            </style>
-
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}" />
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script src="{{ url_for('static', filename='semantic.js') }}"></script>
         <script>
-            $(function(){
-				$("#sourcel div").click(function(){
-					$("#sourcelang").val($(this).attr("data-id"));
-				});
-			});
-            $(function(){
-				$("#targetl div").click(function(){
-					$("#targetlang").val($(this).attr("data-id"));
-				});
-			});
-			$(function(){
-				$("#domain div").click(function(){
-					$("#domainval").val($(this).attr("data-id"));
-				});
-			});
+            // $(function(){
+			// 	$("#sourcel div").click(function(){
+			// 		$("#sourcelang").val($(this).attr("data-id"));
+            //         // console.log($("#sourcel div").attr("data-id"))
+			// 	});
+			// });
+            // $(function(){
+			// 	$("#targetl div").click(function(){
+			// 		$("#targetlang").val($(this).attr("data-id"));
+            //         // console.log($("#targetl div").attr("data-id"))
+			// 	});
+			// });
             $(document).ready(function(){
                 $('.ui.dropdown')
                 .dropdown();
             });
+            
+            $(function(){
+				$("#translate").click(function(){
+                   
+                    var requestData = {
+                        "sourcelang": $('input[class=sourcelang]').val(),
+                        "targetlang": $('input[class=targetlang]').val(),
+                        "rawtext": $("#textareasource").val()
+                    }
+                    // console.log(requestData);
+                    $("#originalText").html(requestData['rawtext']);
+                    $("#translatedText").html("Translating...");
+                    $.ajax({
+                        url: "{{ url_for('request_api.translate') }}",
+                        type: "POST",
+                        data: requestData,
+                        success: function(data){
+                            $("#translatedText").html(data.translated_text);
+                        }
+                    });
+				});
+			});
         </script>
         
     </head>
@@ -80,9 +70,9 @@
         <br /><br /><br /><br />
         <div class="container">
             <form method="POST" action="">
-				<input type="hidden" id="sourcelang" name="sourcelang" value="{{ source_lang }}"></input>
-				<input type="hidden" id="targetlang" name="targetlang" value="{{ target_lang }}"></input>
-                <input type="hidden" id="domainval" name="domainval"></input>
+				<!--input type="hidden" id="sourcelang" name="sourcelang" class="sourcelang" ></input-->
+				<!--input type="hidden" id="targetlang" name="targetlang" class="targetlang" ></input-->
+                <!--input type="hidden" id="domainval" name="domainval"></input>-->
 				A sample sentence: The digital age, also referred to as the information society, is characterized by ever growing volumes of information.<br /><br/>
                 <br /><br />
                 <div class="form-group">
@@ -95,8 +85,8 @@
                             </div>
                         </div>
                         <div class="ui fluid search dropdown button column">
-                            <i class="world icon"></i>
-                            <span class="text">Source Language</span>
+                            <input type="hidden" id="sourcelang" name="sourcelang" class="sourcelang">
+                            <span class="text"><i class="world icon"></i>Source Language</span>
                             <div class="menu" id="sourcel">
                                 <div class="item" data-id="af">Afrikaans</div>
                                 <div class="item" data-id="am">Amharic</div>
@@ -200,8 +190,8 @@
                             </div>
                         </div>
                         <div class="ui fluid search dropdown button column">
-                            <i class="world icon"></i>
-                            <span class="text">Target Language</span>
+                            <input type="hidden" id="targetlang" name="targetlang" class="targetlang">
+                            <span class="text"><i class="world icon"></i>Target Language</span>
                             <div class="menu" id="targetl">
                                 <div class="item" data-id="af">Afrikaans</div>
                                 <div class="item" data-id="am">Amharic</div>
@@ -304,19 +294,13 @@
                                 <div class="item" data-id="zu">Zulu</div>
                             </div>
                         </div>
-                        <div class="ui fluid search dropdown button column">
-                            <i class="filter icon"></i>
-                            <span class="text">Domain</span>
-                            <div class="menu">
-                                <div class="item disabled">Healthcare</div>
-                            </div>
-                        </div>
                       </div>
 					
 					<br /><br />
                     <textarea rows="5" cols="5" class="form-control" id="textareasource" placeholder="Enter text (preferably one sentence)" name="rawtext" required>{{ source_text }}</textarea>
                     <br />
-                    <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Translate</button>
+                    <!-- <button type="submit" class="btn btn-info" onclick=""><i class="fa fa-database"></i> Translate</button> -->
+                    <button id ="translate" type="button" class="btn btn-info" ><i class="fa fa-database"></i> Translate</button>
                 </div>
             </form>
         </div>
@@ -324,14 +308,14 @@
         <div class="container ui stackable equal width grid">
             <div class="column">
                 <p>Original</p>
-                <div class="alert alert-success" role="alert">
-                    {{ source_text }}
+                <div id="originalText" class="alert alert-success" role="alert">
+                    
                 </div>
             </div>
             <div class="column">
                 <p>Translation</p>
-                <div class="alert alert-success" role="alert">
-                    {{ target_text }}
+                <div id="translatedText" class="alert alert-success" role="alert">
+                    
                 </div>
             </div>
           </div>
