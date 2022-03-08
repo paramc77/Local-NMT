@@ -37,7 +37,18 @@
             
             $(function(){
 				$("#translate").click(function(){
-                   
+                    if($('input[class=sourcelang]').val() == ""){
+                       alert("Please select source language");
+                        return false;
+                    }
+                    if($('input[class=targetlang]').val() == ""){
+                        alert("Please select target language");
+                        return false;
+                    }
+                    if($("#textareasource").val() == ""){
+                        alert("Please enter text to translate");
+                        return false;
+                    }
                     var requestData = {
                         "sourcelang": $('input[class=sourcelang]').val(),
                         "targetlang": $('input[class=targetlang]').val(),
