@@ -1,3 +1,5 @@
+<p align="center"><img src="./static/favicon.png" alt="logo" width="185" height="84"/></p>
+
 # Centre for Translation Studies NMT on Web (CTSNMT)
 
 ## Changelog after forking
