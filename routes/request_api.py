@@ -57,9 +57,13 @@ def translate():
     result = {
         "translated_text": translation[0]
     }
-    with io.open("recordTranslations.tsv", "a") as transWrite:
-        transWrite.write(source_l + "\t" + target_l + "\t" + "\"" + source_text.strip() + "\"" + "\t" + "\"" + translation[0].strip() + "\"" + "\n")
-
+    if (source_text == "The digital age, also referred to as the information society, is characterized by ever-growing volumes of information."):
+        return jsonify(result), 200
+    else:
+        with io.open("recordTranslations.tsv", "a") as transWrite:
+            transWrite.write(source_l + "\t" + target_l + "\t" + "\"" + source_text.strip() + "\"" + "\t" + "\"" + translation[0].strip() + "\"" + "\n")
     return jsonify(result), 200
+
+    
 
  
