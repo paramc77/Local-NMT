@@ -57,13 +57,13 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
- (requires GPU for fast inference, relatively slower inference with CPUs)
+ (requires GPU for fast inference, slower inference with CPUs)
 
 Now, you can open Browser and copy and paste URL indicated in prompt (http://localhost:5000)
 
 ## User Interface
 
-![alt text](screen.png?raw=true "User Interface")
+![alt text](./screen.png?raw=true "User Interface")
 
 ## License
 CC-BY-SA 4.0
