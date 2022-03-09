@@ -63,5 +63,4 @@ Now, you can open Browser and copy and paste URL indicated in prompt (http://loc
 ![alt text](screen.png?raw=true "User Interface")
 
 ## License
-Apache License 2.0 (as per the original creator of the Flask template)
- 
+CC-BY-SA 4.0
