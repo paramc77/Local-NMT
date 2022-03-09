@@ -8,9 +8,12 @@
 ## Changelog after forking
 
 #### 09/03/2021
-- Alert boxes for missing parameters
+- Alert boxes for missing parameters.
 - Copy button, and clear buttons added for ease.
-- langauges appear in alphabetical order
+- langauges order changed to alphabetical (mostly).
+- Copy translation button to copy the translated text to clipboard.
+- Back-translate button to reverse the language pairs and back-translate the previous translated output.
+
 #### 08/03/2021
 - **v1.0.0**: Asynchrounous translation finally!
 - Use of Swagger API added, calls to API for translation (removed form submit).
