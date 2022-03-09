@@ -2,7 +2,11 @@
 
 ## Changelog after forking
 
-#### 03/08/2021
+#### 09/03/2021
+- Alert boxes for missing parameters
+- Copy button, and clear buttons added for ease.
+- langauges appear in alphabetical order
+#### 08/03/2021
 - **v1.0.0**: Asynchrounous translation finally!
 - Use of Swagger API added, calls to API for translation (removed form submit).
 - Source and Target language selection via Python dictionary; removed dependency of data-id from HTML. 
@@ -12,8 +16,7 @@
 - navbar icon trimmed.
 - added collection of translated text to a file (step towards feedback)
 #### 31/12/2021
-- **v0.5.1**: Asynchrounous translation finally!
-- Changed model to Facebook M2M for supporting 100+ languages.
+- **v0.5.1**: Changed model to Facebook M2M for supporting 100+ languages.
 - Tokenizer change.
 - Added target language change support via dropdown (source language change to be added later).
 - Flask hosting changed to 0.0.0.0 to support access throughout internal network.
