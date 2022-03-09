@@ -4,7 +4,7 @@
 
 [![GitHub issues](https://img.shields.io/github/issues/surrey-nlp/Local-NMT?style=flat-square)](https://github.com/surrey-nlp/Local-NMT/issues)
 [![GitHub license](https://img.shields.io/github/license/surrey-nlp/Local-NMT?style=flat-square)](https://github.com/surrey-nlp/Local-NMT)
-[![Twitter](https://img.shields.io/twitter/url?style=flat-square)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fsurrey-nlp%2FLocal-NMT)
+[![Twitter](https://img.shields.io/twitter/url?style=flat-square)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fsurrey-nlp%2FLocal-NMT)
 ## Changelog after forking
 
 #### 09/03/2021
