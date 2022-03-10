@@ -38,7 +38,7 @@
 - Added target language change support via dropdown (source language change to be added later).
 - Flask hosting changed to 0.0.0.0 to support access throughout internal network.
 
-## To be added
+## Yet to be added
 - Feedback support
 - Internal CTS NMT systems
 - Model change support
