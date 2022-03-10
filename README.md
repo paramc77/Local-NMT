@@ -7,14 +7,16 @@
 [![Twitter](https://img.shields.io/twitter/url?style=flat-square&url=https://github.com/surrey-nlp/Local-NMT)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fsurrey-nlp%2FLocal-NMT)
 ## Changelog after forking
 
-#### 09/03/2021
+#### 10/03/2022
+- Added [bertviz](https://github.com/jessevig/bertviz) based visualization.
+#### 09/03/2022
 - Alert boxes for missing parameters.
 - Copy button, and clear buttons added for ease.
 - langauges order changed to alphabetical (mostly).
 - Copy translation button to copy the translated text to clipboard.
 - Back-translate button to reverse the language pairs and back-translate the previous translated output.
 
-#### 08/03/2021
+#### 08/03/2022
 - **v1.0.0**: Asynchrounous translation finally!
 - Use of Swagger API added, calls to API for translation (removed form submit).
 - Source and Target language selection via Python dictionary; removed dependency of data-id from HTML. 
@@ -23,11 +25,6 @@
 - resolved "hidden input" dependencies, jquery based language selection using semantic ui default hidden fields.
 - navbar icon trimmed.
 - added collection of translated text to a file (step towards feedback)
-#### 31/12/2021
-- **v0.5.1**: Changed model to Facebook M2M for supporting 100+ languages.
-- Tokenizer change.
-- Added target language change support via dropdown (source language change to be added later).
-- Flask hosting changed to 0.0.0.0 to support access throughout internal network.
 
 #### 01/01/2022
 - Added Semantic UI for searchable dropdown.
@@ -35,6 +32,11 @@
 - POST request sends back previous source/target language pair (system defaults to translating for the last language pair, if languages not selected).
 - Added support for model change in HTML (Flask side pages to be added later).
 - Added CTS logo.
+#### 31/12/2021
+- **v0.5.1**: Changed model to Facebook M2M for supporting 100+ languages.
+- Tokenizer change.
+- Added target language change support via dropdown (source language change to be added later).
+- Flask hosting changed to 0.0.0.0 to support access throughout internal network.
 
 ## To be added
 - Feedback support
