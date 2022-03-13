@@ -2,8 +2,9 @@
 import uuid
 from datetime import datetime, timedelta
 from flask import jsonify, abort, request, Blueprint, render_template
-import io
+import io, os
 from bertviz.bertviz import model_view
+from werkzeug.utils import secure_filename
 
 from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
 import torch
@@ -13,21 +14,36 @@ REQUEST_API = Blueprint('request_api', __name__)
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 tokenizer = M2M100Tokenizer.from_pretrained("facebook/m2m100_418M")
 model = M2M100ForConditionalGeneration.from_pretrained("facebook/m2m100_418M").to(device)
+langidLangs = ["af", "am", "ar", "az", "be", "bg", "bn", "br", "bs", "ca", "cs", "cy", "da", "de", "el", "en", "es", "et", "fa", "fi", "fr", "ga", "gl", "gu", "he", "hi", "hr", "ht", "hu", "hy", "id", "is", "it", "ja", "jv", "ka", "kk", "km", "kn", "ko", "lb", "lo", "lt", "lv", "mg", "mk", "ml", "mn", "mr", "ms", "ne", "nl", "no", "oc", "or", "pa", "pl", "ps", "pt", "ro", "ru", "si", "sk", "sl", "sq", "sr", "sv", "sw", "ta", "th", "tl", "tr", "uk", "ur", "vi", "xh", "zh", "zu"]
 
 languages = ["Afrikaans", "Amharic", "Arabic", "Asturian", "Azerbaijani", "Bashkir", "Belarusian", "Bulgarian", "Bengali", "Breton", "Bosnian", "Valencian", "Cebuano", "Czech", "Welsh", "Danish", "German", "Greeek", "English", "Spanish", "Estonian", "Persian", "Fulah", "Finnish", "French", "Irish", "Scottish Gaelic", "Galician", "Gujarati", "Hausa", "Hebrew", "Hindi", "Croatian", "Haitian Creole", "Hungarian", "Armenian", "Indonesian", "Igbo", "Iloko", "Icelandic", "Italian", "Japanese", "Javanese", "Georgian", "Kazakh", "Central Khmer", "Kannada", "Korean", "Letzeburgesch", "Ganda", "Lingala", "Lao", "Lithuanian", "Latvian", "Malagasy", "Macedonian", "Malayalam", "Mongolian", "Marathi", "Malay", "Burmese", "Nepali", "Flemish", "Norwegian", "Northern Sotho", "Occitan", "Oriya", "Punjabi", "Polish", "Pashto", "Portuguese", "Moldovan", "Russian", "Sindhi", "Sinhalese", "Slovak", "Slovenian", "Somali", "Albanian", "Serbian", "Swati", "Sundanese", "Swedish", "Swahili", "Tamil", "Thai", "Tagalog", "Tswana", "Turkish", "Ukrainian", "Urdu", "Uzbek", "Vietnamese", "Wolof", "Xhosa", "Yiddish", "Yoruba", "Chinese", "Zulu"]
 langslow = (map(lambda x: x.lower(), languages))
 langCodes = ["af", "am", "ar", "ast", "az", "ba", "be", "bg", "bn", "br", "bs", "ca", "ceb", "cs", "cy", "da", "de", "el", "en", "es", "et", "fa", "ff", "fi", "fr", "ga", "gd", "gl", "gu", "ha", "he", "hi", "hr", "ht", "hu", "hy", "id", "ig", "ilo", "is", "it", "ja", "jv", "ka", "kk", "km", "kn", "ko", "lb", "lg", "ln", "lo", "lt", "lv", "mg", "mk", "ml", "mn", "mr", "ms", "my", "ne", "nl", "no", "ns", "oc", "or", "pa", "pl", "ps", "pt", "ro", "ru", "sd", "si", "sk", "sl", "so", "sq", "sr", "ss", "su", "sv", "sw", "ta", "th", "tl", "tn", "tr", "uk", "ur", "uz", "vi", "wo", "xh", "yi", "yo", "zh", "zu"]
 langDict = dict(zip(langslow,langCodes))
 
+upload_folder = "uploads/"
+
 def get_blueprint():
     """Return the blueprint for the main app module"""
     return REQUEST_API
 
-
 @REQUEST_API.route('/', methods=['GET', 'POST'])
 def index():
     return render_template("index.html")
-    
+
+@REQUEST_API.route('/upload/', methods=['GET', 'POST'])
+def upload():
+    return render_template("upload.html")
+
+@REQUEST_API.route('/uploadtranslate', methods = ['POST'])
+def uploadtranslate():
+   if request.method == 'POST': # check if the method is post
+      print(request.form['sourcelang'])
+      print(request.form['targetlang'])
+      f = request.files['file'] # get the file from the files object
+      # Saving the file in the required destination
+      f.save(os.path.join(upload_folder ,secure_filename(f.filename))) # this will secure the file
+      return 'File Uploaded Successfully' # Display this message after uploading
 
 @REQUEST_API.route('/translate', methods=['POST'])
 def translate():
@@ -103,6 +119,14 @@ def visualize():
     }
 
     return jsonify(result), 200
+
+# @REQUEST_API.route('/upload', methods = ['GET', 'POST'])
+# def upload():
+#    if request.method == 'POST': # check if the method is post
+#       f = request.files['file'] # get the file from the files object
+#       f.save(secure_filename(f.filename)) # this will secure the file
+#       return 'file uploaded successfully' # Display this message after uploading
+		
 
     
 

@@ -24,6 +24,12 @@ APP.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 
 
 APP.register_blueprint(request_api.get_blueprint())
+
+upload_folder = "uploads/"
+if not os.path.exists(upload_folder):
+   os.mkdir(upload_folder)
+
+APP.config['UPLOAD_FOLDER'] = upload_folder
 '''
 
 @APP.errorhandler(400)
