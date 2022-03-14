@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>CTS NMT Systems</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, charset='utf-8'" />
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -22,7 +22,6 @@
         <script src="{{ url_for('static', filename='langid.js') }}"></script>
         <script>
             $(document).on('click','#yesLang',function(){
-                // $('input[class=sourcelang]').val(langs_dictionary[rank[i]["lang"]]).change();
                 $("#lang0").html('');
                 $("#lang0").hide();
                 return false;
@@ -35,112 +34,9 @@
                 }, 2000);
                 return false;
             });
-            // $(document).ready(function(){
-            //     $("#yesLang").click(function(){
-            //         $('input[class=sourcelang]').val(langs_dictionary[rank[i]["lang"]]).change();
-            //         $("#lang0").html('');
-            //         $("#lang0").hide();
-            //         return false;
-            //     });
-            // });
-            $(document).ready(function(){
-                $("#noLang").click(function(){
-                    $('input[class=sourcelang]').val("").change();
-                    $("#lang0").html('Select a source language on your own, stop bothering me!');
-                    return false;
-                });
-            });
-            // function yesLang(){
-            //     $('input[class=sourcelang]').val(langs_dictionary[rank[i]["lang"]]).change();
-            //     $("#lang0").html('');
-            //     $("#lang0").hide();
-            //     return false;
-            // }
-            // function noLang(){
-            //     $('input[class=sourcelang]').val("").change();
-            //     $("#lang0").html('Select a source language on your own, stop bothering me!');
-            //     return false;
-            // }
             $(document).ready(function() {
                 langs_dictionary={ 
-                    "af": "Afrikaans", 
-                    "am": "Amharic", 
-                    "ar": "Arabic", 
-                    "az": "Azerbaijani", 
-                    "be": "Belarusian", 
-                    "bg": "Bulgarian", 
-                    "bn": "Bengali", 
-                    "br": "Breton", 
-                    "bs": "Bosnian", 
-                    "ca": "Valencian", 
-                    "cs": "Czech", 
-                    "cy": "Welsh", 
-                    "da": "Danish", 
-                    "de": "German", 
-                    "el": "Greeek", 
-                    "en": "English", 
-                    "es": "Spanish", 
-                    "et": "Estonian", 
-                    "fa": "Persian", 
-                    "fi": "Finnish", 
-                    "fr": "French", 
-                    "ga": "Irish", 
-                    "gl": "Galician", 
-                    "gu": "Gujarati", 
-                    "he": "Hebrew", 
-                    "hi": "Hindi", 
-                    "hr": "Croatian", 
-                    "ht": "Haitian Creole", 
-                    "hu": "Hungarian", 
-                    "hy": "Armenian", 
-                    "id": "Indonesian", 
-                    "is": "Icelandic", 
-                    "it": "Italian", 
-                    "ja": "Japanese", 
-                    "jv": "Javanese", 
-                    "ka": "Georgian", 
-                    "kk": "Kazakh", 
-                    "km": "Central Khmer", 
-                    "kn": "Kannada", 
-                    "ko": "Korean", 
-                    "lb": "Letzeburgesch", 
-                    "lo": "Lao", 
-                    "lt": "Lithuanian", 
-                    "lv": "Latvian", 
-                    "mg": "Malagasy", 
-                    "mk": "Macedonian", 
-                    "ml": "Malayalam", 
-                    "mn": "Mongolian", 
-                    "mr": "Marathi", 
-                    "ms": "Malay", 
-                    "ne": "Nepali", 
-                    "nl": "Flemish", 
-                    "no": "Norwegian", 
-                    "oc": "Occitan", 
-                    "or": "Oriya", 
-                    "pa": "Punjabi", 
-                    "pl": "Polish", 
-                    "ps": "Pashto", 
-                    "pt": "Portuguese", 
-                    "ro": "Moldovan", 
-                    "ru": "Russian", 
-                    "si": "Sinhalese", 
-                    "sk": "Slovak", 
-                    "sl": "Slovenian", 
-                    "sq": "Albanian", 
-                    "sr": "Serbian", 
-                    "sv": "Swedish", 
-                    "sw": "Swahili", 
-                    "ta": "Tamil", 
-                    "th": "Thai", 
-                    "tl": "Tagalog", 
-                    "tr": "Turkish", 
-                    "uk": "Ukrainian", 
-                    "ur": "Urdu", 
-                    "vi": "Vietnamese", 
-                    "xh": "Xhosa", 
-                    "zh": "Chinese", 
-                    "zu": "Zulu"
+                    "af": "Afrikaans", "am": "Amharic", "ar": "Arabic", "az": "Azerbaijani", "be": "Belarusian", "bg": "Bulgarian", "bn": "Bengali", "br": "Breton", "bs": "Bosnian", "ca": "Valencian", "cs": "Czech", "cy": "Welsh", "da": "Danish", "de": "German", "el": "Greeek", "en": "English", "es": "Spanish", "et": "Estonian", "fa": "Persian", "fi": "Finnish", "fr": "French", "ga": "Irish", "gl": "Galician", "gu": "Gujarati", "he": "Hebrew", "hi": "Hindi", "hr": "Croatian", "ht": "Haitian Creole", "hu": "Hungarian", "hy": "Armenian", "id": "Indonesian", "is": "Icelandic", "it": "Italian", "ja": "Japanese", "jv": "Javanese", "ka": "Georgian", "kk": "Kazakh", "km": "Central Khmer", "kn": "Kannada", "ko": "Korean", "lb": "Letzeburgesch", "lo": "Lao", "lt": "Lithuanian", "lv": "Latvian", "mg": "Malagasy", "mk": "Macedonian", "ml": "Malayalam", "mn": "Mongolian", "mr": "Marathi", "ms": "Malay", "ne": "Nepali", "nl": "Flemish", "no": "Norwegian", "oc": "Occitan", "or": "Oriya", "pa": "Punjabi", "pl": "Polish", "ps": "Pashto", "pt": "Portuguese", "ro": "Moldovan", "ru": "Russian", "si": "Sinhalese", "sk": "Slovak", "sl": "Slovenian", "sq": "Albanian", "sr": "Serbian", "sv": "Swedish", "sw": "Swahili", "ta": "Tamil", "th": "Thai", "tl": "Tagalog", "tr": "Turkish", "uk": "Ukrainian", "ur": "Urdu", "vi": "Vietnamese", "xh": "Xhosa", "zh": "Chinese", "zu": "Zulu"
                 };
                 $("#textareasource").keyup(displayType);
             
@@ -169,6 +65,24 @@
                 .dropdown();
             });
             $(document).ready(function(){
+                var hf_models = ['facebook/m2m100_418M', 'facebook/m2m100_1.2B']
+                $.ajax({
+                    url: "{{ url_for('request_api.models') }}",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data){
+                        var models = data['models'];
+                        models = models.concat(hf_models);
+                        for( var i = 0; i< models.length; i++){
+                                $('#models').append("<div class='item'>"+ models[i] + "</div>");
+                        }
+                    },
+                    error:function(){
+                        console.log('error');
+                    }
+                });
+            });
+            $(document).ready(function(){
                 var textContent = "The digital age, also referred to as the information society, is characterized by ever-growing volumes of information.";
                 $("#copybutton").click(function(){
                     $("#textareasource").val(textContent);
@@ -190,6 +104,52 @@
                 document.execCommand("copy");
                 $temp.remove();
             }
+            $(document).on('change','#modeldomain',function(){
+                var model = $('input[class=modeldomain]').val();
+                $("#modelLoadAlert").show();
+                $.ajax({
+                        url: "{{ url_for('request_api.load_model') }}",
+                        type: "POST",
+                        data: {
+                            "model_name": model
+                        },
+                        success: function(data){
+                            if (data["message"] == "success"){
+                                // console.log(data);
+
+                                if("sourceLangDict" in data && "targetLangDict" in data){
+                                    var lang = data['sourceLangDict'];
+                                    console.log(lang)
+                                    var divs = '';
+                                    for (let k in lang) {
+                                        console.log('source ' + k + ' is ' + lang[k])
+                                        divs = divs + "<div class='item' data-id='"+lang[k]+"'>"+k+"</div>"
+                                    }
+                                    $('#sourcel').html(divs);
+                                    var lang = data['targetLangDict'];
+                                    console.log(lang)
+                                    var divs = '';
+                                    for (let k in lang) {
+                                        console.log('target ' + k + ' is ' + lang[k])
+                                        divs = divs + "<div class='item' data-id='"+lang[k]+"'>"+k+"</div>"
+                                    }
+                                    $('#targetl').html(divs);
+                                }
+                                else{
+                                    var divs = '<div class="item" data-id="af">Afrikaans</div><div class="item" data-id="sq">Albanian</div><div class="item" data-id="am">Amharic</div><div class="item" data-id="ar">Arabic</div><div class="item" data-id="hy">Armenian</div><div class="item" data-id="ast">Asturian</div><div class="item" data-id="az">Azerbaijani</div><div class="item" data-id="ba">Bashkir</div><div class="item" data-id="be">Belarusian</div><div class="item" data-id="bg">Bulgarian</div><div class="item" data-id="bn">Bengali</div><div class="item" data-id="br">Breton</div><div class="item" data-id="bs">Bosnian</div><div class="item" data-id="ceb">Cebuano</div><div class="item" data-id="zh">Chinese</div><div class="item" data-id="cs">Czech</div><div class="item" data-id="da">Danish</div><div class="item" data-id="en">English</div><div class="item" data-id="et">Estonian</div><div class="item" data-id="fi">Finnish</div><div class="item" data-id="nl">Flemish</div><div class="item" data-id="fr">French</div><div class="item" data-id="ff">Fulah</div><div class="item" data-id="de">German</div><div class="item" data-id="el">Greeek</div><div class="item" data-id="fa">Persian</div><div class="item" data-id="ga">Irish</div><div class="item" data-id="gd">Scottish Gaelic</div><div class="item" data-id="gl">Galician</div><div class="item" data-id="lg">Ganda</div><div class="item" data-id="gu">Gujarati</div><div class="item" data-id="ha">Hausa</div><div class="item" data-id="he">Hebrew</div><div class="item" data-id="hi">Hindi</div><div class="item" data-id="hr">Croatian</div><div class="item" data-id="ht">Haitian Creole</div><div class="item" data-id="hu">Hungarian</div><div class="item" data-id="id">Indonesian</div><div class="item" data-id="ig">Igbo</div><div class="item" data-id="ilo">Iloko</div><div class="item" data-id="is">Icelandic</div><div class="item" data-id="it">Italian</div><div class="item" data-id="ja">Japanese</div><div class="item" data-id="jv">Javanese</div><div class="item" data-id="ka">Georgian</div><div class="item" data-id="kk">Kazakh</div><div class="item" data-id="km">Central Khmer</div><div class="item" data-id="kn">Kannada</div><div class="item" data-id="ko">Korean</div><div class="item" data-id="lb">Letzeburgesch</div><div class="item" data-id="ln">Lingala</div><div class="item" data-id="lo">Lao</div><div class="item" data-id="lt">Lithuanian</div><div class="item" data-id="lv">Latvian</div><div class="item" data-id="mk">Macedonian</div><div class="item" data-id="mg">Malagasy</div><div class="item" data-id="ml">Malayalam</div><div class="item" data-id="mr">Marathi</div><div class="item" data-id="mn">Mongolian</div><div class="item" data-id="ro">Moldovan</div><div class="item" data-id="ms">Malay</div><div class="item" data-id="my">Burmese</div><div class="item" data-id="ne">Nepali</div><div class="item" data-id="no">Norwegian</div><div class="item" data-id="ns">Northern Sotho</div><div class="item" data-id="oc">Occitan</div><div class="item" data-id="or">Oriya</div><div class="item" data-id="pa">Punjabi</div><div class="item" data-id="pl">Polish</div><div class="item" data-id="ps">Pashto</div><div class="item" data-id="pt">Portuguese</div><div class="item" data-id="ru">Russian</div><div class="item" data-id="sr">Serbian</div><div class="item" data-id="sd">Sindhi</div><div class="item" data-id="si">Sinhalese</div><div class="item" data-id="sk">Slovak</div><div class="item" data-id="sl">Slovenian</div><div class="item" data-id="so">Somali</div><div class="item" data-id="es">Spanish</div><div class="item" data-id="ss">Swati</div><div class="item" data-id="su">Sundanese</div><div class="item" data-id="sv">Swedish</div><div class="item" data-id="sw">Swahili</div><div class="item" data-id="ta">Tamil</div><div class="item" data-id="th">Thai</div><div class="item" data-id="tl">Tagalog</div><div class="item" data-id="tn">Tswana</div><div class="item" data-id="tr">Turkish</div><div class="item" data-id="uk">Ukrainian</div><div class="item" data-id="ur">Urdu</div><div class="item" data-id="uz">Uzbek</div><div class="item" data-id="ca">Valencian</div><div class="item" data-id="vi">Vietnamese</div><div class="item" data-id="cy">Welsh</div><div class="item" data-id="wo">Wolof</div><div class="item" data-id="xh">Xhosa</div><div class="item" data-id="yi">Yiddish</div><div class="item" data-id="yo">Yoruba</div><div class="item" data-id="zu">Zulu</div>';
+                                    $('#sourcel').html(divs);
+                                    $('#targetl').html(divs);
+                                }
+                                $("#modelLoadAlert").hide();
+                                $("#modelLoadSuccess").show();
+                            } 
+                            else{
+                                $("#modelLoadAlert").hide();
+                                $("#modelLoadFailed").show();
+                            }
+                        }
+                });
+            });
             $(function(){
 				$("#translate").click(function(){
 
@@ -281,7 +241,8 @@
                     var requestData = {
                         "sourcelang": $('input[class=sourcelang]').val(),
                         "targetlang": $('input[class=targetlang]').val(),
-                        "rawtext": $("#originalText").html()
+                        "rawtext": $("#originalText").html(),
+                        "model": $('input[class=modeldomain]').val()
                     }
                     $("#attText").show();
                     $("#attinfo").show();
@@ -735,6 +696,18 @@
                         <a class="close" onclick="$('#rawTextAlert').hide()">×</a>  
                         Please enter <strong>the text</strong> to be translated.
                     </div>
+                    <div class="ui fluid alert alert-warning column" style="display: none" id="modelLoadAlert"> 
+                        <a class="close" onclick="$('#modelLoadAlert').hide()">×</a>  
+                        Model is loading. Please wait...  
+                    </div>
+                    <div class="ui fluid alert alert-success column" style="display: none" id="modelLoadSuccess"> 
+                        <a class="close" onclick="$('#modelLoadSuccess').hide()">×</a>  
+                        Model loaded successfully.
+                    </div>
+                    <div class="ui fluid alert alert-danger column" style="display: none" id="modelLoadFailed"> 
+                        <a class="close" onclick="$('#modelLoadFailed').hide()">×</a>  
+                        Model failed to load. 
+                    </div>
                 </div>
                 <hr><br/>
                 <div class="form-group">    
@@ -743,8 +716,8 @@
                         <div class="ui fluid search dropdown button column">
                             <i class="cloud icon"></i>
                             <span class="text">Model-Domain</span>
-                            <div class="menu">
-                                <div class="item disabled">Facebook M2M</div>
+                            <div class="menu" id="models">
+                                <!-- <div class="item disabled">Facebook M2M</div> -->
                             </div>
                         </div>
                         <div class="ui fluid search dropdown button column">
@@ -761,7 +734,7 @@
                                 <div class="item" data-id="af">Afrikaans</div><div class="item" data-id="sq">Albanian</div><div class="item" data-id="am">Amharic</div><div class="item" data-id="ar">Arabic</div><div class="item" data-id="hy">Armenian</div><div class="item" data-id="ast">Asturian</div><div class="item" data-id="az">Azerbaijani</div><div class="item" data-id="ba">Bashkir</div><div class="item" data-id="be">Belarusian</div><div class="item" data-id="bg">Bulgarian</div><div class="item" data-id="bn">Bengali</div><div class="item" data-id="br">Breton</div><div class="item" data-id="bs">Bosnian</div><div class="item" data-id="ceb">Cebuano</div><div class="item" data-id="zh">Chinese</div><div class="item" data-id="cs">Czech</div><div class="item" data-id="da">Danish</div><div class="item" data-id="en">English</div><div class="item" data-id="et">Estonian</div><div class="item" data-id="fi">Finnish</div><div class="item" data-id="nl">Flemish</div><div class="item" data-id="fr">French</div><div class="item" data-id="ff">Fulah</div><div class="item" data-id="de">German</div><div class="item" data-id="el">Greeek</div><div class="item" data-id="fa">Persian</div><div class="item" data-id="ga">Irish</div><div class="item" data-id="gd">Scottish Gaelic</div><div class="item" data-id="gl">Galician</div><div class="item" data-id="lg">Ganda</div><div class="item" data-id="gu">Gujarati</div><div class="item" data-id="ha">Hausa</div><div class="item" data-id="he">Hebrew</div><div class="item" data-id="hi">Hindi</div><div class="item" data-id="hr">Croatian</div><div class="item" data-id="ht">Haitian Creole</div><div class="item" data-id="hu">Hungarian</div><div class="item" data-id="id">Indonesian</div><div class="item" data-id="ig">Igbo</div><div class="item" data-id="ilo">Iloko</div><div class="item" data-id="is">Icelandic</div><div class="item" data-id="it">Italian</div><div class="item" data-id="ja">Japanese</div><div class="item" data-id="jv">Javanese</div><div class="item" data-id="ka">Georgian</div><div class="item" data-id="kk">Kazakh</div><div class="item" data-id="km">Central Khmer</div><div class="item" data-id="kn">Kannada</div><div class="item" data-id="ko">Korean</div><div class="item" data-id="lb">Letzeburgesch</div><div class="item" data-id="ln">Lingala</div><div class="item" data-id="lo">Lao</div><div class="item" data-id="lt">Lithuanian</div><div class="item" data-id="lv">Latvian</div><div class="item" data-id="mk">Macedonian</div><div class="item" data-id="mg">Malagasy</div><div class="item" data-id="ml">Malayalam</div><div class="item" data-id="mr">Marathi</div><div class="item" data-id="mn">Mongolian</div><div class="item" data-id="ro">Moldovan</div><div class="item" data-id="ms">Malay</div><div class="item" data-id="my">Burmese</div><div class="item" data-id="ne">Nepali</div><div class="item" data-id="no">Norwegian</div><div class="item" data-id="ns">Northern Sotho</div><div class="item" data-id="oc">Occitan</div><div class="item" data-id="or">Oriya</div><div class="item" data-id="pa">Punjabi</div><div class="item" data-id="pl">Polish</div><div class="item" data-id="ps">Pashto</div><div class="item" data-id="pt">Portuguese</div><div class="item" data-id="ru">Russian</div><div class="item" data-id="sr">Serbian</div><div class="item" data-id="sd">Sindhi</div><div class="item" data-id="si">Sinhalese</div><div class="item" data-id="sk">Slovak</div><div class="item" data-id="sl">Slovenian</div><div class="item" data-id="so">Somali</div><div class="item" data-id="es">Spanish</div><div class="item" data-id="ss">Swati</div><div class="item" data-id="su">Sundanese</div><div class="item" data-id="sv">Swedish</div><div class="item" data-id="sw">Swahili</div><div class="item" data-id="ta">Tamil</div><div class="item" data-id="th">Thai</div><div class="item" data-id="tl">Tagalog</div><div class="item" data-id="tn">Tswana</div><div class="item" data-id="tr">Turkish</div><div class="item" data-id="uk">Ukrainian</div><div class="item" data-id="ur">Urdu</div><div class="item" data-id="uz">Uzbek</div><div class="item" data-id="ca">Valencian</div><div class="item" data-id="vi">Vietnamese</div><div class="item" data-id="cy">Welsh</div><div class="item" data-id="wo">Wolof</div><div class="item" data-id="xh">Xhosa</div><div class="item" data-id="yi">Yiddish</div><div class="item" data-id="yo">Yoruba</div><div class="item" data-id="zu">Zulu</div>
                             </div>
                         </div>
-                      </div>
+                    </div>
 					<br />
                     <p id="lang0" style="display: none"></p>
                     <hr/>
@@ -805,7 +778,7 @@
         <footer class="footer">
           <div class="container">
             <span class="text-muted">
-                V. 0.2 - Being developed by <a href='https://dipteshkanojia.github.io'>Diptesh</a>; <a href="https://github.com/fantinuoli/Local-NMT">Original template</a>; Translation model at <a href="https://huggingface.co/docs/transformers/model_doc/m2m_100">HuggingFace FB-M2M Model</a>.
+                V. 1.0 - Being developed by <a href='https://dipteshkanojia.github.io'>Diptesh</a>; <a href="https://github.com/fantinuoli/Local-NMT">Original template</a>; Translation model at <a href="https://huggingface.co/docs/transformers/model_doc/m2m_100">HuggingFace FB-M2M Model</a>.
             </span>
           </div>
         </footer>
