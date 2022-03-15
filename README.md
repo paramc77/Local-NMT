@@ -1,4 +1,4 @@
-<p align="center"><img src="./static/favicon.png" alt="logo" width="215" height="100"/></p>
+<p align="center"><img src="./static/favicon.png" alt="logo" width="220" height="100"/></p>
 
 # Centre for Translation Studies NMT on Web (CTSNMT)
 
@@ -6,7 +6,40 @@
 [![GitHub license](https://img.shields.io/github/license/surrey-nlp/Local-NMT?style=flat-square)](https://github.com/surrey-nlp/Local-NMT)
 [![Twitter](https://img.shields.io/twitter/url?style=flat-square&url=https://github.com/surrey-nlp/Local-NMT)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fsurrey-nlp%2FLocal-NMT)
 
+<hr/>
+### Welcome to the CTSNMT project repository. To use this codebase and host this application locally, simple clone the repository and follow the installation instructions provided below.
+<hr/>
+## Installation ( necessary; but easy :) )
+
+#### Step 1
+```bash
+git clone https://github.com/surrey-nlp/Local-NMT.git
+cd Local-NMT
+```
+#### Step 2
+```bash
+pip install -r requirements.txt
+```
+<hr/>
+
+## Run
+```bash
+python app.py --port <VALUE>
+```
+ (requires GPU for fast inference, slower inference with CPUs)
+
+Now, you can open Browser and copy and paste URL indicated in prompt (http://localhost:5000)
+<hr/>
+
+## User Interface
+<br/>
+
+![alt text](./screen.png?raw=true "User Interface")
+
+<hr/>
+
 ## Yet to be added
+
 - Feedback support
 - Internal CTS NMT systems
 
@@ -51,28 +84,7 @@
 - Added target language change support via dropdown (source language change to be added later).
 - Flask hosting changed to 0.0.0.0 to support access throughout internal network.
 
-## Installation ( necessary; but easy :) )
 
-#### Step 1
-```bash
-git clone https://github.com/surrey-nlp/Local-NMT.git
-cd Local-NMT
-```
-#### Step 2
-```bash
-pip install -r requirements.txt
-```
-## Run
-```bash
-python app.py
-```
- (requires GPU for fast inference, slower inference with CPUs)
-
-Now, you can open Browser and copy and paste URL indicated in prompt (http://localhost:5000)
-
-## User Interface
-
-![alt text](./screen.png?raw=true "User Interface")
 
 ## License
 CC-BY-SA 4.0
