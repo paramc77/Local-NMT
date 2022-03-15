@@ -7,8 +7,11 @@
 [![Twitter](https://img.shields.io/twitter/url?style=flat-square&url=https://github.com/surrey-nlp/Local-NMT)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fsurrey-nlp%2FLocal-NMT)
 
 <hr/>
+
 ### Welcome to the CTSNMT project repository. To use this codebase and host this application locally, simple clone the repository and follow the installation instructions provided below.
+
 <hr/>
+
 ## Installation ( necessary; but easy :) )
 
 #### Step 1
@@ -26,12 +29,14 @@ pip install -r requirements.txt
 ```bash
 python app.py --port <VALUE>
 ```
- (requires GPU for fast inference, slower inference with CPUs)
+(requires GPU for fast inference, slower inference with CPUs)
 
 Now, you can open Browser and copy and paste URL indicated in prompt (http://localhost:5000)
+
 <hr/>
 
 ## User Interface
+
 <br/>
 
 ![alt text](./screen.png?raw=true "User Interface")
@@ -78,12 +83,12 @@ Now, you can open Browser and copy and paste URL indicated in prompt (http://loc
 - POST request sends back previous source/target language pair (system defaults to translating for the last language pair, if languages not selected).
 - Added support for model change in HTML (Flask side pages to be added later).
 - Added CTS logo.
+
 #### 31/12/2021
 - **v0.5.1**: Changed model to Facebook M2M for supporting 100+ languages.
 - Tokenizer change.
 - Added target language change support via dropdown (source language change to be added later).
 - Flask hosting changed to 0.0.0.0 to support access throughout internal network.
-
 
 
 ## License
