@@ -5,10 +5,22 @@
 [![GitHub issues](https://img.shields.io/github/issues/surrey-nlp/Local-NMT?style=flat-square)](https://github.com/surrey-nlp/Local-NMT/issues)
 [![GitHub license](https://img.shields.io/github/license/surrey-nlp/Local-NMT?style=flat-square)](https://github.com/surrey-nlp/Local-NMT)
 [![Twitter](https://img.shields.io/twitter/url?style=flat-square&url=https://github.com/surrey-nlp/Local-NMT)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fsurrey-nlp%2FLocal-NMT)
+
+## Yet to be added
+- Feedback support
+- Internal CTS NMT systems
+
 ## Changelog after forking
 
+#### 11/03 - 15/032022
+ - Sentence Generation on source side for each of the 99 languages supported by the FB model.
+ - Language Identification via the JS-based [langid.py library](https://github.com/saffsd/langid.js). Thanks to the developer! :)
+ - Inference using trained NMT models from the folder "models" in CTSNMT root. 
+ - Interface cleaning.
+
 #### 10/03/2022
-- Added [bertviz](https://github.com/jessevig/bertviz) based visualization.
+- Added [bertviz](https://github.com/jessevig/bertviz) based visualization. Thanks to the developer! :)
+
 #### 09/03/2022
 - Alert boxes for missing parameters.
 - Copy button, and clear buttons added for ease.
@@ -37,12 +49,6 @@
 - Tokenizer change.
 - Added target language change support via dropdown (source language change to be added later).
 - Flask hosting changed to 0.0.0.0 to support access throughout internal network.
-
-## Yet to be added
-- Feedback support
-- Internal CTS NMT systems
-- Model change support
-- Domain-level Support
 
 ## Installation ( necessary; but easy :) )
 
