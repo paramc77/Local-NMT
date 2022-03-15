@@ -1,4 +1,4 @@
-<p align="center"><img src="./static/favicon.png" alt="logo" width="200" height="100"/></p>
+<p align="center"><img src="./static/favicon.png" alt="logo" width="210" height="100"/></p>
 
 # Centre for Translation Studies NMT on Web (CTSNMT)
 
