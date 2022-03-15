@@ -14,7 +14,7 @@
 
 #### 11/03 - 15/032022
  - Sentence Generation on source side for each of the 99 languages supported by the FB model.
- - Language Identification via the JS-based [langid.py library](https://github.com/saffsd/langid.js). Thanks to the developer! :)
+ - Language Identification via the JS-based [langid.py library](https://github.com/saffsd/langid.js). Supports 78 languages. Thanks to the developer! :)
  - Inference using trained NMT models from the folder "models" in CTSNMT root. 
  - PORT value to be passed as an `argparse` parameter now. Use --port <VALUE> otherwise it defaults to using PORT 5000.
  - Interface cleaning.
