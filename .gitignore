@@ -3,3 +3,4 @@ uploads
 uploads/*
 uploads/*/*
 recordTranslations.tsv
+__pycache__
