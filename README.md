@@ -95,3 +95,4 @@ Now, you can open Browser and copy and paste URL indicated in prompt (http://loc
 
 ## License
 CC-BY-SA 4.0
+ 
