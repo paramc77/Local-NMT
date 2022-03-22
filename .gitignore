@@ -1,1 +1,5 @@
 models/*/*
+uploads
+uploads/*
+uploads/*/*
+recordTranslations.tsv

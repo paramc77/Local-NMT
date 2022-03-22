@@ -30,6 +30,8 @@ if not os.path.exists(upload_folder):
    os.mkdir(upload_folder)
 
 APP.config['UPLOAD_FOLDER'] = upload_folder
+APP.config['DOWNLOAD_FOLDER'] = upload_folder+"output/"
+
 '''
 
 @APP.errorhandler(400)

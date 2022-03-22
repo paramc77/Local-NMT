@@ -46,11 +46,13 @@ Now, you can open Browser and copy and paste URL indicated in prompt (http://loc
 ## Yet to be added
 
 - Feedback support
-- Internal CTS NMT systems
 
 ## Changelog after forking
 
-#### 11/03 - 15/032022
+#### 20/03/2022 - 22/03/2022
+ - Added support for uploading file and translating it, a download link is provided later.
+
+#### 11/03/2022 - 15/03/2022
  - Sentence Generation on source side for each of the 99 languages supported by the FB model.
  - Language Identification via the JS-based [langid.py library](https://github.com/saffsd/langid.js). Supports 78 languages. Thanks to the developer! :)
  - Inference using trained NMT models from the folder "models" in CTSNMT root. 

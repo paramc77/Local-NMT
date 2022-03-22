@@ -1,7 +1,7 @@
 """The Endpoints to manage the BOOK_REQUESTS"""
 import uuid
 from datetime import datetime, timedelta
-from flask import jsonify, abort, request, Blueprint, render_template
+from flask import jsonify, abort, request, Blueprint, render_template, send_file, send_from_directory
 from bertviz.bertviz import model_view
 from config import MODELS_PATH
 from transformers import  MBartForConditionalGeneration, AutoModelForSeq2SeqLM
@@ -9,11 +9,15 @@ from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
 from transformers import AlbertTokenizer, AutoTokenizer
 import json
 import torch
-import os
+import io, os
+from werkzeug.utils import secure_filename
 from validate_email import validate_email
+# from datetime import datetime
+import time
+
 REQUEST_API = Blueprint('request_api', __name__)
 
-
+upload_folder = "uploads/"
 tokenizer = ''
 model = ''
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -128,7 +132,8 @@ def visualize():
 
     if not request.form:
         abort(400)
-    
+
+    global tokenizer, model, device
     source_text = request.form['rawtext']
     source_l = langDict[request.form['sourcelang'].lower()]
     if(source_l == ''):
@@ -187,3 +192,55 @@ def visualize():
         return jsonify(result), 200
     else:
         abort(400)
+
+@REQUEST_API.route('/upload/', methods=['GET', 'POST'])
+def upload():
+    return render_template("upload.html")
+
+@REQUEST_API.route('/uploadtranslate', methods = ['POST'])
+def uploadtranslate():
+   if request.method == 'POST': # check if the method is post
+        global tokenizer, model, device
+        # print(request.form['sourcelang'])
+        # print(request.form['targetlang'])
+        f = request.files['file'] # get the file from the files object
+        
+        source_l = langDict[request.form['sourcelang'].lower()]
+        if(source_l == ''):
+            tokenizer.src_lang = "en"
+        else:
+            tokenizer.src_lang = source_l
+        
+        target_l = langDict[request.form['targetlang'].lower()]
+        if(target_l == ''):
+            target_l = "de"
+        else:
+            tokenizer.tgt_lang = target_l
+        # Saving the file in the required destination
+        timenow = time.time()
+        timeObj = time.localtime(timenow)
+        timestampStr = str("%d-%d-%d-%d-%d-%d" % (timeObj.tm_mday, timeObj.tm_mon, timeObj.tm_year, timeObj.tm_hour, timeObj.tm_min, timeObj.tm_sec))
+        f.save(os.path.join(upload_folder+"/input/", secure_filename(f.filename+"."+timestampStr))) # this will secure the file
+        source_text = []
+        with io.open(os.path.join(upload_folder+"/input/", secure_filename(f.filename+"."+timestampStr)), 'r', encoding='utf-8') as sourcefile:
+            for line in sourcefile:
+                source_text.append(line)
+        trasnlated_text = []
+        timenow = time.time()
+        timeObj = time.localtime(timenow)
+        timestampStr = str("%d-%d-%d-%d-%d-%d" % (timeObj.tm_mday, timeObj.tm_mon, timeObj.tm_year, timeObj.tm_hour, timeObj.tm_min, timeObj.tm_sec)) 
+        with io.open(os.path.join(upload_folder+"output/", secure_filename(f.filename+"."+timestampStr)), 'w', encoding='utf-8') as outputfile:
+            for line in source_text:
+                encoded_hi = tokenizer([line], return_tensors="pt", padding=True).to(device)
+                generated_tokens = model.generate(**encoded_hi, forced_bos_token_id=tokenizer.get_lang_id(target_l))
+                translation = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
+                trasnlated_text.append(translation[0])
+                outputfile.write(translation[0]+"\n")
+
+        return os.path.join(secure_filename(f.filename+"."+timestampStr))
+
+@REQUEST_API.route('/uploads/output/<path:filename>', methods=['GET', 'POST'])
+def download(filename):
+    full_path = os.path.join("uploads/output/")
+    # print(full_path)
+    return send_from_directory(full_path, filename)
