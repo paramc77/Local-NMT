@@ -12,7 +12,7 @@
 
 <hr/>
 
-### Welcome to the CTSNMT project repository. To use this codebase and host this application locally, simple clone the repository and follow the installation instructions provided below.
+#### Welcome to the CTSNMT project repository. To use this codebase and host this application locally - simply clone the repository, and follow the installation instructions provided below.
 
 <hr/>
 
