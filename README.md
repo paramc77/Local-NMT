@@ -3,8 +3,12 @@
 # Centre for Translation Studies NMT on Web (CTSNMT)
 
 [![GitHub issues](https://img.shields.io/github/issues/surrey-nlp/Local-NMT?style=flat-square)](https://github.com/surrey-nlp/Local-NMT/issues)
+[![GitHub stars](https://img.shields.io/github/stars/surrey-nlp/Local-NMT?style=flat-square)](https://github.com/surrey-nlp/Local-NMT/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/surrey-nlp/Local-NMT?style=flat-square)](https://github.com/surrey-nlp/Local-NMT/network)
 [![GitHub license](https://img.shields.io/github/license/surrey-nlp/Local-NMT?style=flat-square)](https://github.com/surrey-nlp/Local-NMT)
 [![Twitter](https://img.shields.io/twitter/url?style=flat-square&url=https://github.com/surrey-nlp/Local-NMT)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fsurrey-nlp%2FLocal-NMT)
+[![Twitter Follow](https://img.shields.io/twitter/follow/CTS_Surrey?color=1DA1F2&logo=twitter&style=flat-square)](https://twitter.com/CTS_Surrey)
+[![Twitter Follow](https://img.shields.io/twitter/follow/PeopleCentredAI?color=1DA1F2&logo=twitter&style=flat-square)](https://twitter.com/PeopleCentredAI)
 
 <hr/>
 
