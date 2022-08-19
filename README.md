@@ -1,4 +1,4 @@
-<p align="center"><img src="./static/favicon.png" alt="logo" width="220" height="100"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="aisurrey.svg" alt="Surrey Institute for People-Centred AI Logo" width="300"/></p>
+<p align="center"><img src="./static/favicon.png" alt="logo" width="220" height="100"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./static/aisurrey.svg" alt="Surrey Institute for People-Centred AI Logo" width="300"/></p>
 
 # Centre for Translation Studies NMT on Web (CTSNMT)
 
@@ -53,7 +53,7 @@ Now, you can open Browser and copy and paste URL indicated in prompt (http://loc
 
 <br/>
 
-![alt text](./screen.png?raw=true "User Interface")
+![alt text](./static/screen.png?raw=true "User Interface")
 
 <hr/>
 
