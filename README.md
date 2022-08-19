@@ -1,4 +1,4 @@
-<p align="center"><img src="./static/favicon.png" alt="logo" width="220" height="100"/></p>
+<p align="center"><img src="./static/favicon.png" alt="logo" width="220" height="100"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="aisurrey.svg" alt="Surrey Institute for People-Centred AI Logo" width="300"/></p>
 
 # Centre for Translation Studies NMT on Web (CTSNMT)
 
